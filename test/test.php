@@ -1,7 +1,7 @@
 <?php namespace IET_OU\QA\Test;
 
 /**
- *
+ * A trivial test file!
  */
 
 function test()

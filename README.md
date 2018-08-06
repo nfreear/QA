@@ -1,12 +1,12 @@
 
 [![Build status — Travis-CI][travis-icon]][travis]
 [![Husky Git hooks][husky-icon]][husky]
-<!-- [![GitLab pipeline status][gitlab-icon]][gitlab] -->
 [![js-semistandard-style][semi-icon]][semi]
-<!-- [![... - on Npmjs][npm-icon]][npm] -->
 [![License][license-icon]][mit]
 [![Vulnerability test][snyk-icon]][snyk]
-[![Accessibility test - QA passes][pa11y-icon]][pa11y-ci]
+<!-- [![Accessibility test - QA passes][pa11y-icon]][pa11y-ci] -->
+<!-- [![GitLab pipeline status][gitlab-icon]][gitlab] -->
+<!-- [![... - on Npmjs][npm-icon]][npm] -->
 
 # iet-ou/QA
 
@@ -14,9 +14,30 @@ Rulesets for PHPMD and other quality assurance resources.
 
 Originally for APPLAuD.
 
+## Install ... build ... test
+
+### PHP
+
+```sh
+composer install
+composer build
+composer test
+composer execute
+composer hook pre-commit
+```
+
+### Javascript / Node
+
+```sh
+npm i
+npm run build
+npm test
+npm run fix
+```
+
 
 ---
-© 2018 Nick Freear. © 2016 The Open University (IET)."
+© 2018 Nick Freear. © 2016 The Open University (IET).
 
 [MIT]: https://nfreear.mit-license.org/2016-2018#!-QA "MIT License | © Nick Freear."
 [mit-txt]: https://nfreear.mit-license.org/2016-2018/license.txt "MIT License | © Nick Freear."

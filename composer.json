@@ -38,13 +38,14 @@
         }
     },
     "scripts": {
-        "execute": "php -r 'require \"tests/test.php\"; \\IET_OU\\QA\\Test\\test();'",
+        "build": "echo Building ... !",
+        "execute": "php -r 'require \"test/test.php\"; \\IET_OU\\QA\\Test\\test();'",
         "hook": "cghooks",
         "test": [
             "composer validate",
             "xmllint -e vendor -vs .",
             "parallel-lint --exclude vendor .",
-            "phpcs --standard=PSR2 tests/*.php # --encoding=utf-8 --extensions=php",
+            "phpcs --standard=PSR2 test/*.php # --encoding=utf-8 --extensions=php",
             "# phpunit"
         ]
     },
