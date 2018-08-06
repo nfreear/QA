@@ -1,10 +1,8 @@
 /*!
-  A demo test.
+  A demo unit test.
 
   https://mochajs.org/#getting-started
 */
-
-/* global describe, it */
 
 const assert = require('assert');
 

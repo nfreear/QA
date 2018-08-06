@@ -1,8 +1,9 @@
 {
   "#": "Check you package.json with e.g. ~ http://package-json-validator.com/",
+
   "private": true,
-  "name": "iet-ou--qa",
-  "description": "Rulesets for PHPMD and other quality assurance resources. Originally for APPLAuD. ©The Open University (IET).",
+  "name": "@nfreear/QA",
+  "description": "Dual-language continuous integration and Git hooks. ©The Open University (IET).",
   "version": "1.0.0",
   "homepage": "https://iet.open.ac.uk",
   "keywords": [
@@ -11,7 +12,7 @@
     "OpenUniversity",
     "IET-OU"
   ],
-  "license": "proprietary",
+  "license": "MIT",
   "bugs": "https://github.com/nfreear/QA/issues",
   "repository": "https://github.com/nfreear/QA.git",
   "author": "Nick Freear",
@@ -20,10 +21,19 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "csslint": "^1.0.5",
     "husky": "^1.0.0-rc.13",
     "mocha": "^5.2.0",
     "semistandard": "^12.0.1"
   },
+  "eslintConfig": {
+    "extends": "semistandard",
+    "overrides": [ {
+      "files": [ "test/*.js" ],
+      "globals": { "describe": false, "it": false }
+    } ]
+  },
+  "eslintIgnore": [ "vendor/" ],
   "husky": {
     "hooks": {
       "pre-commit": "npm test"
@@ -31,7 +41,7 @@
   },
   "scripts": {
     "build": "echo 'E.g. browserify && uglifyjs && lessc && ...'",
-    "test": "semistandard && mocha # && ... && ...",
+    "test": "eslint **/*.js && mocha && csslint test/*.css # && ...",
     "fix": "semistandard --fix",
     "pa11y-ci": "echo pa11y-ci ... not implemented yet!"
   }

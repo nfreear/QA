@@ -1,12 +1,10 @@
 {
-    "name": "iet-ou/qa",
-    "description": "Rulesets for PHPMD and other quality assurance resources. Originally for APPLAuD. ©The Open University (IET).",
-    "homepage": "http://iet.open.ac.uk",
+    "name": "nfreear/qa",
+    "description": "Dual-language continuous integration and Git hooks. ©The Open University (IET).",
+    "homepage": "https://iet.open.ac.uk",
     "keywords": [ "testing", "quality", "OpenUniversity", "IET-OU" ],
-    "license": "proprietary",
+    "license": "MIT",
     "time": "2016-05-16T19:29:44",
-    "minimum-stability": "beta",
-    "type": "library",
     "authors": [
         { "name": "Nick Freear (@nfreear)" }
     ],
@@ -26,7 +24,7 @@
     },
     "suggest": {
         "fig-r/psr2r-sniffer": "PHP FIG rectified, PSR-2-R",
-        "phpunit/phpunit": "7; (compatibility issues !)",
+        "phpunit/phpunit": "7.* (compatibility issues !)",
         "wp-coding-standards/wpcs": "WordPress coding conventions"
     },
     "autoload": {
@@ -38,16 +36,17 @@
         }
     },
     "scripts": {
-        "build": "echo Building ... !",
+        "build": "echo PHP - building ... !",
         "execute": "php -r 'require \"test/test.php\"; \\IET_OU\\QA\\Test\\test();'",
         "hook": "cghooks",
         "test": [
-            "composer validate",
             "xmllint -e vendor -vs .",
             "parallel-lint --exclude vendor .",
-            "phpcs --standard=PSR2 test/*.php # --encoding=utf-8 --extensions=php",
+            "phpcs --standard=./test/phpcs-demo.xml **/*",
             "# phpunit"
-        ]
+        ],
+        "post-install-cmd": "cghooks add --ignore-lock",
+        "post-update-cmd": "cghooks update"
     },
     "extra": {
         "branch-alias": {
