@@ -1,0 +1,34 @@
+{
+  "#": "Check you package.json with e.g. ~ http://package-json-validator.com/",
+
+  "private": true,
+  "name": "iet-ou--qa",
+  "description": "Rulesets for PHPMD and other quality assurance resources. Originally for APPLAuD. ©The Open University (IET).",
+  "version": "1.0.0",
+  "homepage": "https://iet.open.ac.uk",
+  "keywords": [
+    "testing",
+    "quality",
+    "OpenUniversity",
+    "IET-OU"
+  ],
+  "license": "proprietary",
+  "bugs": "https://github.com/nfreear/QA/issues",
+  "repository": "https://github.com/nfreear/QA.git",
+  "author": "Nick Freear",
+  "engines": { "node": ">= 8.11" },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^1.0.0-rc.13",
+    "semistandard": "^12.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
+  "scripts": {
+    "build": "echo 'E.g. browserify && uglifyjs && lessc && ...'",
+    "test": "semistandard # && ... && ..."
+  }
+}

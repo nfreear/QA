@@ -5,32 +5,32 @@
     "keywords": [ "testing", "quality", "OpenUniversity", "IET-OU" ],
     "license": "proprietary",
     "time": "2016-05-16T19:29:44",
-    "minimum-stability": "alpha",
+    "minimum-stability": "beta",
     "type": "library",
     "authors": [
-        { "name": "Nick Freear (@nfreear)", "role": "Developer" }
+        { "name": "Nick Freear (@nfreear)" }
     ],
     "support": {
-        "email": "iet-webmaster@open.ac.uk",
-        "source": "https://github.com/nfreear/QA"
+        "email": "iet-ltt-support@open.ac.uk",
+        "source": "https://github.com/nfreear/QA.git"
     },
     "require": {
-        "php": ">=5.4.0",
-        "jakub-onderka/php-parallel-lint": "^0.9.2",
-        "phpmd/phpmd": "^2.4.3",
-        "phpunit/phpunit": "~4.0",
-        "sclable/xml-lint": "^0.2.2",
-        "squizlabs/php_codesniffer": "^2.5.1"
+        "php": ">= 7.0.30"
     },
     "require-dev": {
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "squizlabs/php_codesniffer": "^3.3",
+        "sclable/xml-lint": "^0.2.4",
+        "phpmd/phpmd": "^2.6",
+        "brainmaestro/composer-git-hooks": "^2.4"
     },
     "suggest": {
         "fig-r/psr2r-sniffer": "PHP FIG rectified, PSR-2-R",
+        "phpunit/phpunit": "7; (compatibility issues !)",
         "wp-coding-standards/wpcs": "WordPress coding conventions"
     },
     "autoload": {
-        "psr-4": {
-        }
+        "psr-4": { }
     },
     "autoload-dev": {
         "psr-4": {
@@ -38,17 +38,22 @@
         }
     },
     "scripts": {
+        "execute": "php -r 'require \"tests/test.php\"; \\IET_OU\\QA\\Test\\test();'",
+        "hook": "cghooks",
         "test": [
-            "composer validate --no-interaction",
-            "vendor/bin/xmllint -e vendor -vs .",
-            "# vendor/bin/parallel-lint --exclude vendor .",
-            "# vendor/bin/phpcs --standard=PSR2 --encoding=utf-8 --extensions=php php/* && echo OK",
-            "# vendor/bin/phpunit"
+            "composer validate",
+            "xmllint -e vendor -vs .",
+            "parallel-lint --exclude vendor .",
+            "phpcs --standard=PSR2 tests/*.php # --encoding=utf-8 --extensions=php",
+            "# phpunit"
         ]
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
+        },
+        "hooks": {
+            "pre-commit": "composer test"
         }
     }
 }

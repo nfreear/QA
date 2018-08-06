@@ -1,0 +1,33 @@
+# Travis-CI ~ PHP + Node.JS.
+
+language: php
+
+php: 7.1
+
+git:
+  depth: 5
+
+before_install: nvm install v8.1
+
+install:
+  - composer install
+  - npm install
+
+before_script:
+  - composer build
+  - npm run build
+
+script:
+  - composer validate --no-interaction
+  - composer test
+  - composer hook pre-commit
+  - npm test
+  - node tests/test.js
+  - composer execute
+
+after_script:
+  - npm run pa11y-ci
+  - ls -alh
+  #- git status
+
+# End.
